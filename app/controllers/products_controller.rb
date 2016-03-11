@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scanner_product_params
-      params.permit(:ISBN_id)
+      params.permit(:id, :ISBN_id)
     end
 
     def product_params
