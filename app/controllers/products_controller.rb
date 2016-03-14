@@ -1,3 +1,6 @@
+require 'httparty'
+require 'json'
+
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
@@ -64,6 +67,12 @@ class ProductsController < ApplicationController
   def scanner_gprs_update
     @product = Product.new(scanner_product_params)
     @product.save
+    HTTParty.post("https://api.pushover.net/1/messages.json", 
+    :body => { :token => ENV["PUSHOVER_TOKEN"], 
+               :user => ENV["PUSHOVER_USER"], 
+               :MESSAGE => "ISBN: #{params[:ISBN_id]} is posted."
+             }.to_json,
+    :headers => { 'Content-Type' => 'application/json' } )
     redirect_to :products
   end
 
