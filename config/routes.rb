@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'products#index'
   resources :products
 
   get 'scanner_gprs_update', to: 'products#scanner_gprs_update'
