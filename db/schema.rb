@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311130155) do
+ActiveRecord::Schema.define(version: 20160328094529) do
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "ISBN_id",    null: false
+    t.string   "ISBN_id",    null: false
   end
 
   add_index "products", ["ISBN_id"], name: "index_products_on_ISBN_id"
